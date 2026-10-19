@@ -1,0 +1,27 @@
+# 编译中间产物（集中输出，见 Directory.Build.props）
+output/
+bin/
+obj/
+
+# 发布目录与打包压缩包（发行包带模型，代码仓库不包含模型）
+dist/
+*.zip
+*.7z
+*.tar.gz
+
+# 模型大文件（保持代码仓库轻量，模型按需放置或从 Release 下载）
+models/
+*.gguf
+*.bin
+*.onnx
+*.safetensors
+
+# IDE / OS
+.vs/
+.zcode/
+*.user
+*.suo
+.DS_Store
+Thumbs.db
+*.log
+*.tmp

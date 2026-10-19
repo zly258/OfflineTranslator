@@ -1,0 +1,63 @@
+Source,Target,SourceLang,TargetLang,CaseSensitive
+# 离线翻译助手 出厂默认术语库（仅常用建模相关词条，可自行增删）
+# 列: Source,Target,SourceLang,TargetLang,CaseSensitive（0=忽略大小写, 1=区分大小写）
+# 以 # 开头的行是注释；可用 Excel 直接编辑；英文译名使用 Title Case 规范（如 Assembly、Sheet Metal）。
+零件,Part,zh,en,0
+装配体,Assembly,zh,en,0
+部件,Component,zh,en,0
+子装配体,Sub-Assembly,zh,en,0
+标准件,Standard Parts,zh,en,0
+外购件,Purchased Parts,zh,en,0
+焊接件,Weldment,zh,en,0
+加工件,Machined Parts,zh,en,0
+草图,Sketch,zh,en,0
+拉伸,Extrude,zh,en,0
+旋转,Revolve,zh,en,0
+扫掠,Sweep,zh,en,0
+放样,Loft,zh,en,0
+抽壳,Shell,zh,en,0
+倒角,Chamfer,zh,en,0
+圆角,Fillet,zh,en,0
+打孔,Hole,zh,en,0
+加强筋,Rib,zh,en,0
+拔模,Draft,zh,en,0
+螺纹,Thread,zh,en,0
+阵列,Pattern,zh,en,0
+环形阵列,Circular Pattern,zh,en,0
+矩形阵列,Rectangular Pattern,zh,en,0
+镜像,Mirror,zh,en,0
+凸台,Boss,zh,en,0
+凹坑,Indent,zh,en,0
+百叶窗,Louver,zh,en,0
+钣金,Sheet Metal,zh,en,0
+展开,Flat Pattern,zh,en,0
+折弯,Bend,zh,en,0
+基准面,Work Plane,zh,en,0
+基准轴,Work Axis,zh,en,0
+基准点,Work Point,zh,en,0
+坐标系,Coordinate System,zh,en,0
+投影,Project,zh,en,0
+约束,Constraint,zh,en,0
+尺寸,Dimension,zh,en,0
+参数,Parameter,zh,en,0
+配合,Mate,zh,en,0
+装配约束,Assembly Constraint,zh,en,0
+干涉,Interference,zh,en,0
+干涉检查,Interference Check,zh,en,0
+爆炸图,Exploded View,zh,en,0
+剖视图,Section View,zh,en,0
+工程图,Drawing,zh,en,0
+技术要求,Technical Requirements,zh,en,0
+明细表,Part List,zh,en,0
+材料表,Bill of Materials,zh,en,0
+图号,Drawing No.,zh,en,0
+代号,Code,zh,en,0
+名称,Name,zh,en,0
+规格,Specification,zh,en,0
+数量,Qty,zh,en,0
+材质,Material,zh,en,0
+重量,Weight,zh,en,0
+备注,Remarks,zh,en,0
+公差,Tolerance,zh,en,0
+表面粗糙度,Surface Roughness,zh,en,0
+形位公差,Geometric Tolerance,zh,en,0

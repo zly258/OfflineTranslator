@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>13.0</LangVersion>
+    <NoWarn>NU5128</NoWarn>
+  </PropertyGroup>
+
+  <!-- 出厂内置默认术语库（Title Case），规范/用户文件都缺失时在内存中生效 -->
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\assets\glossary-defaults.csv">
+      <LogicalName>WISDRI.Glossary.glossary-defaults.csv</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Sdcb.HyMT2Sharp" Version="2.0.0" />
+    <PackageReference Include="LLamaSharp" Version="0.30.0" />
+    <PackageReference Include="LLamaSharp.Backend.Cpu" Version="0.30.0" />
+    <PackageReference Include="LLamaSharp.Backend.Vulkan.Windows" Version="0.30.0" />
+  </ItemGroup>
+
+</Project>
