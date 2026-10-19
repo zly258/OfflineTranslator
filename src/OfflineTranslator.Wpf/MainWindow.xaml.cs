@@ -29,11 +29,9 @@ public partial class MainWindow : Window
         Title = AppInfo.Title;
 
         SourceLangCombo.ItemsSource = LanguageInfo.SourceLanguages;
-        SourceLangCombo.DisplayMemberPath = nameof(LanguageInfo.DisplayName);
         SourceLangCombo.SelectedIndex = 0; // "auto" 自动检测
 
         TargetLangCombo.ItemsSource = LanguageInfo.TargetLanguages;
-        TargetLangCombo.DisplayMemberPath = nameof(LanguageInfo.DisplayName);
         TargetLangCombo.SelectedIndex = 0; // "zh" 中文
 
         _service.Log += message => Dispatcher.BeginInvoke(() => AppendLog(message));
@@ -501,7 +499,9 @@ public partial class MainWindow : Window
         ModelStatusText.Text = loaded ? "已就绪" : "未加载";
         ModelStatusText.Foreground = loaded ? successBrush : disabledBrush;
 
-        BackendStatusText.Text = loaded ? (_service.EngineRuntimeSummary ?? "就绪") : "--";
+        var summary = _service.EngineRuntimeSummary;
+        BackendStatusText.Text = loaded ? (summary ?? "就绪") : "--";
+        BackendStatusText.ToolTip = loaded && !string.IsNullOrEmpty(summary) ? summary : "当前实际工作的推理后端（如 Vulkan GPU 加速、CPU 等）";
 
         ApiStatusText.Text = apiRunning ? $"运行中 ({_service.ApiUrl})" : "未运行";
         ApiStatusText.Foreground = apiRunning ? successBrush : disabledBrush;
