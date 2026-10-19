@@ -4,10 +4,10 @@
         Title="离线翻译助手"
         Icon="app.ico"
         WindowStartupLocation="CenterScreen"
-        Background="{StaticResource Brush.Window.Background}"
+        Background="{StaticResource Brush.WindowBackground}"
         Foreground="{StaticResource Brush.Text.Primary}"
         FontSize="{StaticResource FontSize.Body}"
-        FontFamily="{StaticResource Font.Family.Primary}"
+        FontFamily="{StaticResource Font.Ui}"
         Height="820" Width="1060"
         MinHeight="680" MinWidth="900"
         Closing="Window_Closing">

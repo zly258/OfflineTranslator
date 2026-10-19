@@ -87,6 +87,27 @@ public partial class App : Application
             return;
         }
 
+        if (e.Args.Any(a => a.Equals("--ui-smoke", StringComparison.OrdinalIgnoreCase)))
+        {
+            try
+            {
+                base.OnStartup(e);
+                var smokeWindow = new MainWindow();
+                MainWindow = smokeWindow;
+                smokeWindow.Show();
+                smokeWindow.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Loaded);
+                smokeWindow.Close();
+                Console.WriteLine("UI smoke test passed.");
+                Environment.Exit(0);
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine("UI smoke test failed: " + ex);
+                Environment.Exit(1);
+            }
+            return;
+        }
+
         base.OnStartup(e);
 
         var window = new MainWindow();

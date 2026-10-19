@@ -131,13 +131,21 @@ Write-Host "  Notes: $($readmeSrcItem.Name) (v$appVersion)" -ForegroundColor Gre
 # 4. Self check
 if (-not $SkipTest) {
     Write-Host ""
-    Write-Host "[4/4] Running automated self check (dist\OfflineTranslator.exe --autotest)..." -ForegroundColor Cyan
+    Write-Host "[4/4] Running automated checks..." -ForegroundColor Cyan
+    Write-Host "  - Verifying UI window startup (smoke test)..."
+    & $exe --ui-smoke
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "ERROR: UI smoke test failed with exit code $LASTEXITCODE" -ForegroundColor Red
+        exit $LASTEXITCODE
+    }
+
+    Write-Host "  - Running full self check (--autotest)..."
     & $exe --autotest
     if ($LASTEXITCODE -ne 0) {
         Write-Host "ERROR: Self check failed with exit code $LASTEXITCODE" -ForegroundColor Red
         exit $LASTEXITCODE
     }
-    Write-Host "Self-check completed successfully!" -ForegroundColor Green
+    Write-Host "All checks completed successfully!" -ForegroundColor Green
     $selfCheckLog = Join-Path $Dist 'selfcheck-result.txt'
     if (Test-Path $selfCheckLog) { Remove-Item -Force $selfCheckLog }
 }
