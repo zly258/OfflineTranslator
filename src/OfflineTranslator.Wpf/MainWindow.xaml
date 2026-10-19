@@ -4,13 +4,15 @@
         Title="离线翻译助手"
         Icon="app.ico"
         WindowStartupLocation="CenterScreen"
-        FontFamily="Microsoft YaHei UI, Segoe UI, sans-serif"
-        FontSize="13"
-        Height="800" Width="1020"
-        MinHeight="660" MinWidth="880"
+        Background="{StaticResource Brush.Window.Background}"
+        Foreground="{StaticResource Brush.Text.Primary}"
+        FontSize="{StaticResource FontSize.Body}"
+        FontFamily="{StaticResource Font.Family.Primary}"
+        Height="820" Width="1060"
+        MinHeight="680" MinWidth="900"
         Closing="Window_Closing">
 
-    <Grid Margin="12">
+    <Grid Margin="{StaticResource Layout.WindowPadding}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -18,9 +20,9 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!-- ======================= 模型管理 ======================= -->
-        <GroupBox Grid.Row="0" Header="翻译引擎（models 目录下的 GGUF · 完全离线）" Padding="8" Margin="0,0,0,8">
-            <Grid>
+        <!-- ======================= 1. 模型与引擎管理 ======================= -->
+        <GroupBox Grid.Row="0" Header="翻译模型与计算引擎（models 目录 · 本地离线）" Margin="0,0,0,8">
+            <Grid Margin="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -33,44 +35,49 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="模型：" VerticalAlignment="Center" Margin="0,0,6,0" />
-                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ModelCombo" Margin="0,0,8,0" Height="28" VerticalContentAlignment="Center" ToolTip="选定模型后点「加载模型」。加载状态下选择其它模型再点一次即可切换。" />
-                <Button Grid.Row="0" Grid.Column="2" x:Name="RefreshModelsButton" Content="刷新" Width="68" Height="28" Margin="0,0,8,0" Click="RefreshModelsButton_Click" />
-                <Button Grid.Row="0" Grid.Column="3" x:Name="LoadModelButton" Content="加载模型" Width="88" Height="28" Margin="0,0,8,0" Click="LoadModelButton_Click" />
-                <Button Grid.Row="0" Grid.Column="4" x:Name="UnloadModelButton" Content="卸载模型" Width="88" Height="28" IsEnabled="False" Click="UnloadModelButton_Click" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="模型选择：" VerticalAlignment="Center" Margin="0,0,8,0" />
+                <ComboBox Grid.Row="0" Grid.Column="1" x:Name="ModelCombo" Height="30" Margin="0,0,8,0" VerticalContentAlignment="Center" ToolTip="选定模型后点「加载模型」。加载后下拉选择其它模型再点「切换到此模型」可热重载。" />
+                <Button Grid.Row="0" Grid.Column="2" x:Name="RefreshModelsButton" Content="刷新" Width="72" Height="30" Margin="0,0,8,0" Click="RefreshModelsButton_Click" ToolTip="重新扫描 models 目录下的所有 GGUF 模型" />
+                <Button Grid.Row="0" Grid.Column="3" x:Name="LoadModelButton" Content="加载模型" Style="{StaticResource Button.Secondary}" Width="96" Height="30" Margin="0,0,8,0" Click="LoadModelButton_Click" />
+                <Button Grid.Row="0" Grid.Column="4" x:Name="UnloadModelButton" Content="卸载模型" Style="{StaticResource Button.Secondary}" Width="88" Height="30" IsEnabled="False" Click="UnloadModelButton_Click" />
 
-                <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Orientation="Horizontal" Margin="0,8,0,0">
+                <!-- 运行状态指标栏 -->
+                <WrapPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" Margin="0,8,0,0" VerticalAlignment="Center">
                     <TextBlock Text="推理线程：" VerticalAlignment="Center" />
-                    <TextBox x:Name="ThreadsBox" Text="0" Width="48" Height="24" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" ToolTip="0 = 自动使用物理性能核。填具体数字则固定线程数。" />
-                    <TextBlock Text="    模型：" VerticalAlignment="Center" Margin="16,0,0,0" />
-                    <TextBlock x:Name="SelectedModelText" Text="--" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#0066CC" />
-                    <TextBlock Text="    状态：" VerticalAlignment="Center" Margin="16,0,0,0" />
-                    <TextBlock x:Name="ModelStatusText" Text="未加载" VerticalAlignment="Center" Foreground="Gray" FontWeight="Bold" />
-                    <TextBlock Text="    后端：" VerticalAlignment="Center" Margin="16,0,0,0" />
-                    <TextBlock x:Name="BackendStatusText" Text="--" VerticalAlignment="Center" Foreground="#007ACC" FontWeight="SemiBold" ToolTip="实际运行的引擎与计算硬件（Vulkan GPU 或 CPU）" />
-                    <TextBlock Text="    内存：" VerticalAlignment="Center" Margin="16,0,0,0" />
-                    <TextBlock x:Name="MemoryText" Text="--" VerticalAlignment="Center" Foreground="Gray" />
-                </StackPanel>
+                    <TextBox x:Name="ThreadsBox" Text="0" Width="44" Height="26" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="0,0,16,0" ToolTip="0 = 自动根据 CPU 性能核优化分配。填具体正整数则固定线程数。" />
+
+                    <TextBlock Text="模型：" VerticalAlignment="Center" />
+                    <TextBlock x:Name="SelectedModelText" Text="--" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource Brush.Accent}" Margin="4,0,16,0" />
+
+                    <TextBlock Text="状态：" VerticalAlignment="Center" />
+                    <TextBlock x:Name="ModelStatusText" Text="未加载" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource Brush.Text.Disabled}" Margin="4,0,16,0" />
+
+                    <TextBlock Text="后端：" VerticalAlignment="Center" />
+                    <TextBlock x:Name="BackendStatusText" Text="--" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="{StaticResource Brush.Accent}" Margin="4,0,16,0" ToolTip="当前实际工作的推理后端（如 Vulkan GPU 加速、CPU 等）" />
+
+                    <TextBlock Text="内存：" VerticalAlignment="Center" />
+                    <TextBlock x:Name="MemoryText" Text="--" VerticalAlignment="Center" Foreground="{StaticResource Brush.Text.Secondary}" Margin="4,0,0,0" />
+                </WrapPanel>
             </Grid>
         </GroupBox>
 
-        <!-- ======================= API 服务 ======================= -->
-        <GroupBox Grid.Row="1" Header="OpenAI 兼容 API（本地服务 · 监听 127.0.0.1）" Padding="8" Margin="0,0,0,8">
-            <StackPanel Orientation="Horizontal">
+        <!-- ======================= 2. 本地 OpenAI 兼容 API ======================= -->
+        <GroupBox Grid.Row="1" Header="OpenAI 兼容 API（本地 HTTP 接口 · 监听 127.0.0.1）" Margin="0,0,0,8">
+            <StackPanel Orientation="Horizontal" Margin="4">
                 <TextBlock Text="端口：" VerticalAlignment="Center" />
-                <TextBox x:Name="PortBox" Text="21894" Width="72" Height="26" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
-                <Button x:Name="StartApiButton" Content="启动 API" Width="88" Height="26" Margin="12,0,8,0" IsEnabled="False" Click="StartApiButton_Click" />
-                <Button x:Name="StopApiButton" Content="停止 API" Width="88" Height="26" IsEnabled="False" Click="StopApiButton_Click" />
-                <TextBlock Text="    状态：" VerticalAlignment="Center" Margin="16,0,0,0" />
-                <TextBlock x:Name="ApiStatusText" Text="未运行" VerticalAlignment="Center" Foreground="Gray" FontWeight="Bold" />
-                <Button x:Name="CopyApiUrlButton" Content="复制地址" Width="76" Height="26" Margin="12,0,0,0" IsEnabled="False" Click="CopyApiUrlButton_Click" />
-                <Button x:Name="TestApiButton" Content="测试 API" Width="76" Height="26" Margin="8,0,0,0" IsEnabled="False" Click="TestApiButton_Click" ToolTip="向 /health 和 /v1/chat/completions 发一次真实请求，验证服务可用" />
+                <TextBox x:Name="PortBox" Text="21894" Width="72" Height="26" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="6,0,12,0" />
+                <Button x:Name="StartApiButton" Content="启动 API" Style="{StaticResource Button.Secondary}" Width="84" Height="30" Margin="0,0,8,0" IsEnabled="False" Click="StartApiButton_Click" />
+                <Button x:Name="StopApiButton" Content="停止 API" Style="{StaticResource Button.Secondary}" Width="84" Height="30" IsEnabled="False" Click="StopApiButton_Click" />
+                <TextBlock Text="状态：" VerticalAlignment="Center" Margin="12,0,4,0" />
+                <TextBlock x:Name="ApiStatusText" Text="未运行" VerticalAlignment="Center" FontWeight="Bold" Foreground="{StaticResource Brush.Text.Disabled}" Margin="0,0,16,0" />
+                <Button x:Name="CopyApiUrlButton" Content="复制地址" Style="{StaticResource Button.Secondary}" Width="80" Height="30" Margin="0,0,8,0" IsEnabled="False" Click="CopyApiUrlButton_Click" />
+                <Button x:Name="TestApiButton" Content="测试 API" Style="{StaticResource Button.Secondary}" Width="80" Height="30" IsEnabled="False" Click="TestApiButton_Click" ToolTip="向 /health 和 /v1/chat/completions 发送真实请求测试服务连通性" />
             </StackPanel>
         </GroupBox>
 
-        <!-- ======================= 多语言翻译面板 ======================= -->
-        <GroupBox Grid.Row="2" Header="翻译" Padding="8">
-            <Grid>
+        <!-- ======================= 3. 多语言翻译工作台 ======================= -->
+        <GroupBox Grid.Row="2" Header="翻译工作台" Margin="0,0,0,8">
+            <Grid Margin="4">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
@@ -78,48 +85,95 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,8">
-                    <TextBlock Text="源语言：" VerticalAlignment="Center" />
-                    <ComboBox x:Name="SourceLangCombo" Width="170" Height="28" VerticalContentAlignment="Center" Margin="0,0,10,0" />
-                    <Button x:Name="SwapLangButton" Content="⇄ 切换" Width="68" Height="28" Margin="0,0,10,0" Click="SwapLangButton_Click" ToolTip="互换源语言和目标语言" />
-                    <TextBlock Text="目标语言：" VerticalAlignment="Center" />
-                    <ComboBox x:Name="TargetLangCombo" Width="170" Height="28" VerticalContentAlignment="Center" Margin="0,0,16,0" />
-                    <TextBlock x:Name="DetectedLangText" Text="" VerticalAlignment="Center" Foreground="#007ACC" FontWeight="SemiBold" />
-                </StackPanel>
+                <!-- 语言选择与对调控制条 -->
+                <Grid Grid.Row="0" Margin="0,0,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
+                    <TextBlock Grid.Column="0" Text="源语言：" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <ComboBox Grid.Column="1" x:Name="SourceLangCombo" Width="170" Height="30" VerticalContentAlignment="Center" Margin="0,0,8,0" />
+
+                    <Button Grid.Column="2" x:Name="SwapLangButton" Content="⇄ 切换" Style="{StaticResource Button.Secondary}" Width="68" Height="30" Margin="0,0,12,0" Click="SwapLangButton_Click" ToolTip="对调源语言与目标语言，同时互换输入输出文字" />
+
+                    <TextBlock Grid.Column="3" Text="目标语言：" VerticalAlignment="Center" Margin="0,0,6,0" />
+                    <ComboBox Grid.Column="4" x:Name="TargetLangCombo" Width="170" Height="30" VerticalContentAlignment="Center" Margin="0,0,12,0" />
+
+                    <TextBlock Grid.Column="5" x:Name="DetectedLangText" Text="" VerticalAlignment="Center" Foreground="{StaticResource Brush.Accent}" FontWeight="SemiBold" />
+                </Grid>
+
+                <!-- 原文输入框 -->
                 <TextBox Grid.Row="1" x:Name="InputBox"
+                         Style="{StaticResource TextBox.Multiline}"
                          AcceptsReturn="True" AcceptsTab="True"
                          TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         FontSize="13.5" Padding="6"
-                         KeyDown="InputBox_KeyDown" />
+                         MinHeight="100"
+                         Padding="8"
+                         KeyDown="InputBox_KeyDown"
+                         ToolTip="在此输入待翻译原文（支持单行、多行段落，按 Ctrl + Enter 快速翻译）" />
 
-                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,8,0,8">
-                    <Button x:Name="TranslateButton" Content="执行翻译 (Ctrl+Enter)" Width="160" Height="30" FontWeight="Bold" IsEnabled="False" Click="TranslateButton_Click" />
-                    <Button x:Name="CancelTranslateButton" Content="停止" Width="68" Height="30" Margin="8,0,0,0" IsEnabled="False" Click="CancelTranslateButton_Click" />
-                    <Button x:Name="ClearButton" Content="清空" Width="68" Height="30" Margin="8,0,0,0" Click="ClearButton_Click" />
-                    <Button x:Name="CopyOutputButton" Content="复制译文" Width="84" Height="30" Margin="8,0,0,0" Click="CopyOutputButton_Click" />
-                    <TextBlock x:Name="LatencyText" Text="耗时: -- ms" VerticalAlignment="Center" Margin="16,0,0,0" Foreground="#006600" FontWeight="SemiBold" />
-                </StackPanel>
+                <!-- 操作工具条（R8: 唯一一个 Primary 按钮为执行翻译） -->
+                <Grid Grid.Row="2" Margin="0,8,0,8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
+                    <Button Grid.Column="0" x:Name="TranslateButton" Content="执行翻译 (Ctrl+Enter)"
+                            Style="{StaticResource Button.Primary}"
+                            Width="180" Height="32" Margin="0,0,8,0"
+                            IsEnabled="False" Click="TranslateButton_Click" />
+
+                    <Button Grid.Column="1" x:Name="CancelTranslateButton" Content="停止"
+                            Style="{StaticResource Button.Danger}"
+                            Width="72" Height="32" Margin="0,0,8,0"
+                            IsEnabled="False" Click="CancelTranslateButton_Click" ToolTip="中断当前正在进行的流式推理" />
+
+                    <Button Grid.Column="2" x:Name="ClearButton" Content="清空"
+                            Style="{StaticResource Button.Secondary}"
+                            Width="72" Height="32" Margin="0,0,8,0"
+                            Click="ClearButton_Click" />
+
+                    <Button Grid.Column="3" x:Name="CopyOutputButton" Content="复制译文"
+                            Style="{StaticResource Button.Secondary}"
+                            Width="92" Height="32" Margin="0,0,16,0"
+                            Click="CopyOutputButton_Click" />
+
+                    <TextBlock Grid.Column="4" x:Name="LatencyText" Text="耗时: -- ms"
+                               VerticalAlignment="Center"
+                               Foreground="{StaticResource Brush.Text.Secondary}" FontWeight="SemiBold" />
+                </Grid>
+
+                <!-- 译文输出框 -->
                 <TextBox Grid.Row="3" x:Name="OutputBox"
+                         Style="{StaticResource TextBox.Multiline}"
                          IsReadOnly="True" IsReadOnlyCaretVisible="True"
                          AcceptsReturn="True"
                          TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         FontSize="13.5" Padding="6"
-                         Background="#F9FBFD" />
+                         MinHeight="100"
+                         Padding="8"
+                         Background="{StaticResource Brush.SurfaceAlt}" />
             </Grid>
         </GroupBox>
 
-        <!-- ======================= 日志面板 ======================= -->
-        <GroupBox Grid.Row="3" Header="运行日志" Padding="4" Height="145" Margin="0,8,0,0">
+        <!-- ======================= 4. 运行日志面板 ======================= -->
+        <GroupBox Grid.Row="3" Header="运行日志" Padding="4" Height="140">
             <TextBox x:Name="LogBox"
+                     Style="{StaticResource TextBox.Code}"
                      IsReadOnly="True"
                      AcceptsReturn="True"
                      TextWrapping="NoWrap"
-                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                     FontFamily="Consolas, Microsoft YaHei UI" FontSize="11.5" />
+                     VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" />
         </GroupBox>
     </Grid>
 </Window>

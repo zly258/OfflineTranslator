@@ -1,0 +1,248 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Tokens.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- ============================================================
+         1. 通用矢量几何图形 (24x24 视口标准，StreamGeometry)
+         ============================================================ -->
+
+    <!-- 操作类 -->
+    <StreamGeometry x:Key="Icon.Geo.Search">M9.5,3 C13.0899,3 16,5.91015 16,9.5 C16,11.1132 15.4124,12.5891 14.4398,13.7297 L20.3536,19.6464 C20.5488,19.8417 20.5488,20.1583 20.3536,20.3536 C20.1583,20.5488 19.8417,20.5488 19.6464,20.3536 L13.7297,14.4398 C12.5891,15.4124 11.1132,16 9.5,16 C5.91015,16 3,13.0899 3,9.5 C3,5.91015 5.91015,3 9.5,3 Z M9.5,4 C6.46243,4 4,6.46243 4,9.5 C4,12.5376 6.46243,15 9.5,15 C12.5376,15 15,12.5376 15,9.5 C15,6.46243 12.5376,4 9.5,4 Z</StreamGeometry>
+    
+    <StreamGeometry x:Key="Icon.Geo.Close">M4.64645,4.64645 C4.84171,4.45118 5.15829,4.45118 5.35355,4.64645 L12,11.2929 L18.6464,4.64645 C18.8417,4.45118 19.1583,4.45118 19.3536,4.64645 C19.5488,4.84171 19.5488,5.15829 19.3536,5.35355 L12.7071,12 L19.3536,18.6464 C19.5488,18.8417 19.5488,19.1583 19.3536,19.3536 C19.1583,19.5488 18.8417,19.5488 18.6464,19.3536 L12,12.7071 L5.35355,19.3536 C5.15829,19.5488 4.84171,19.5488 4.64645,19.3536 C4.45118,19.1583 4.45118,18.8417 4.64645,18.6464 L11.2929,12 L4.64645,5.35355 C4.45118,5.15829 4.45118,4.84171 4.64645,4.64645 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Check">M19.3536,5.64645 C19.5488,5.84171 19.5488,6.15829 19.3536,6.35355 L9.35355,16.3536 C9.15829,16.5488 8.84171,16.5488 8.64645,16.3536 L4.64645,12.3536 C4.45118,12.1583 4.45118,11.8417 4.64645,11.6464 C4.84171,11.4512 5.15829,11.4512 5.35355,11.6464 L9,15.2929 L18.6464,5.64645 C18.8417,5.45118 19.1583,5.45118 19.3536,5.64645 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Plus">M11.5,4 C11.5,3.72386 11.7239,3.5 12,3.5 C12.2761,3.5 12.5,3.72386 12.5,4 L12.5,11.5 L20,11.5 C20.2761,11.5 20.5,11.7239 20.5,12 C20.5,12.2761 20.2761,12.5 20,12.5 L12.5,12.5 L12.5,20 C12.5,20.2761 12.2761,20.5 12,20.5 C11.7239,20.5 11.5,20.2761 11.5,20 L11.5,12.5 L4,12.5 C3.72386,12.5 3.5,12.2761 3.5,12 C3.5,11.7239 3.72386,11.5 4,11.5 L11.5,11.5 L11.5,4 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Edit">M19.7071,4.29289 C20.0976,4.68342 20.0976,5.31658 19.7071,5.70711 L8.70711,16.7071 C8.54117,16.873 8.32437,16.979 8.09025,17.0083 L4.29289,17.483 C3.89679,17.5325 3.53251,17.1682 3.58202,16.7721 L4.05672,12.9747 C4.086,12.7406 4.19195,12.5238 4.35786,12.3579 L15.3579,1.35786 C15.7484,0.967339 16.3816,0.967339 16.7721,1.35786 L19.7071,4.29289 Z M16.065,2.77208 L5.065,13.7721 C5.01016,13.8269 4.97484,13.8992 4.96507,13.9772 L4.618,16.7534 L7.39414,16.4063 C7.47217,16.3966 7.54445,16.3612 7.59929,16.3064 L18.5993,5.30635 L16.065,2.77208 Z M19,20 C19,20.2761 18.7761,20.5 18.5,20.5 L3.5,20.5 C3.22386,20.5 3,20.2761 3,20 C3,19.7239 3.22386,19.5 3.5,19.5 L18.5,19.5 C18.7761,19.5 19,19.7239 19,20 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Trash">M9,3 C9,2.44772 9.44772,2 10,2 L14,2 C14.5523,2 15,2.44772 15,3 L19,3 C19.2761,3 19.5,3.22386 19.5,3.5 C19.5,3.77614 19.2761,4 19,4 L18.337,4 L17.4479,19.1158 C17.3846,20.1917 16.4947,21.0375 15.4173,21.0375 L8.5827,21.0375 C7.5053,21.0375 6.6154,20.1917 6.5521,19.1158 L5.663,4 L5,4 C4.72386,4 4.5,3.77614 4.5,3.5 C4.5,3.22386 4.72386,3 5,3 L9,3 Z M10,3 L14,3 L14,3 L10,3 Z M6.666,4 L7.5499,19.057 C7.5816,19.595 8.0265,20.0375 8.5827,20.0375 L15.4173,20.0375 C15.9735,20.0375 16.4184,19.595 16.4501,19.057 L17.334,4 L6.666,4 Z M9.5,8 C9.77614,8 10,8.22386 10,8.5 L10,16.5 C10,16.7761 9.77614,17 9.5,17 C9.22386,17 9,16.7761 9,16.5 L9,8.5 C9,8.22386 9.22386,8 9.5,8 Z M14.5,8 C14.7761,8 15,8.22386 15,8.5 L15,16.5 C15,16.7761 14.7761,17 14.5,17 C14.2239,17 14,16.7761 14,16.5 L14,8.5 C14,8.22386 14.2239,8 14.5,8 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Refresh">M4.5,12 C4.5,7.85786 7.85786,4.5 12,4.5 C14.2125,4.5 16.1953,5.45789 17.5627,6.97968 L16.2071,8.33527 C15.8166,8.7258 16.0931,9.39414 16.6464,9.39414 L20.5,9.39414 C20.7761,9.39414 21,9.17028 21,8.89414 L21,5.04058 C21,4.48729 20.3317,4.21074 19.9412,4.60126 L18.3283,6.21415 C16.7115,4.53696 14.4754,3.5 12,3.5 C7.30558,3.5 3.5,7.30558 3.5,12 C3.5,12.2761 3.72386,12.5 4,12.5 C4.27614,12.5 4.5,12.2761 4.5,12 Z M19.5,12 C19.5,12.2761 19.7239,12.5 20,12.5 C20.2761,12.5 20.5,12.2761 20.5,12 C20.5,16.6944 16.6944,20.5 12,20.5 C9.7875,20.5 7.8047,19.5421 6.4373,18.0203 L7.7929,16.6647 C8.1834,16.2742 7.9069,15.6059 7.3536,15.6059 L3.5,15.6059 C3.2239,15.6059 3,15.8297 3,16.1059 L3,19.9594 C3,20.5127 3.6683,20.7893 4.0588,20.3987 L5.6717,18.7858 C7.2885,20.463 9.5246,21.5 12,21.5 C16.6944,21.5 20.5,17.6944 20.5,12 C20.5,11.7239 20.2761,11.5 20,11.5 C19.7239,11.5 19.5,11.7239 19.5,12 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Settings">M12,8 C9.79086,8 8,9.79086 8,12 C8,14.2091 9.79086,16 12,16 C14.2091,16 16,14.2091 16,12 C16,9.79086 14.2091,8 12,8 Z M9,12 C9,10.3431 10.3431,9 12,9 C13.6569,9 15,10.3431 15,12 C15,13.6569 13.6569,15 12,15 C10.3431,15 9,13.6569 9,12 Z M19.4335,12.827 C19.475,12.556 19.5,12.28 19.5,12 C19.5,11.72 19.475,11.444 19.4335,11.173 L21.5435,9.524 C21.7335,9.375 21.7875,9.106 21.6665,8.892 L19.6665,5.428 C19.5445,5.214 19.2825,5.131 19.0615,5.215 L16.5775,6.215 C16.0615,5.819 15.4955,5.498 14.8815,5.267 L14.5055,2.624 C14.4715,2.383 14.2655,2.203 14.0225,2.203 L10.0225,2.203 C9.7795,2.203 9.5735,2.383 9.5395,2.624 L9.1635,5.267 C8.5495,5.499 7.9835,5.819 7.4675,6.215 L4.9835,5.215 C4.7625,5.13 4.5005,5.214 4.3785,5.428 L2.3785,8.892 C2.2575,9.106 2.3115,9.375 2.5015,9.524 L4.6115,11.173 C4.57,11.444 4.545,11.72 4.545,12 C4.545,12.28 4.57,12.556 4.6115,12.827 L2.5015,14.476 C2.3115,14.625 2.2575,14.894 2.3785,15.108 L4.3785,18.572 C4.5005,18.786 4.7625,18.87 4.9835,18.785 L7.4675,17.785 C7.9835,18.181 8.5495,18.501 9.1635,18.733 L9.5395,21.376 C9.5735,21.617 9.7795,21.797 10.0225,21.797 L14.0225,21.797 C14.2655,21.797 14.4715,21.617 14.5055,21.376 L14.8815,18.733 C15.4955,18.502 16.0615,18.181 16.5775,17.785 L19.0615,18.785 C19.2825,18.87 19.5445,18.786 19.6665,18.572 L21.6665,15.108 C21.7875,14.894 21.7335,14.625 21.5435,14.476 L19.4335,12.827 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Filter">M3.25,4 C3.25,3.58579 3.58579,3.25 4,3.25 L20,3.25 C20.4142,3.25 20.75,3.58579 20.75,4 C20.75,4.24151 20.6335,4.46824 20.4363,4.61058 L14,9.25087 L14,18.5 C14,18.8025 13.8183,19.0747 13.5413,19.1868 L10.5413,20.402 C10.155,20.5584 9.7247,20.2743 9.7247,19.8569 L9.7247,9.25087 L3.5637,4.61058 C3.3665,4.46824 3.25,4.24151 3.25,4 Z M4.654,4.25 L10.3787,8.56066 C10.5976,8.72545 10.7247,8.98188 10.7247,9.25087 L10.7247,18.9959 L13,18.0747 L13,9.25087 C13,8.98188 13.1271,8.72545 13.346,8.56066 L19.346,4.25 L4.654,4.25 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Download">M12,2.5 C12.2761,2.5 12.5,2.72386 12.5,3 L12.5,13.7929 L15.6464,10.6464 C15.8417,10.4512 16.1583,10.4512 16.3536,10.6464 C16.5488,10.8417 16.5488,11.1583 16.3536,11.3536 L12.3536,15.3536 C12.1583,15.5488 11.8417,15.5488 11.6464,15.3536 L7.64645,11.3536 C7.45118,11.1583 7.45118,10.8417 7.64645,10.6464 C7.84171,10.4512 8.15829,10.4512 8.35355,10.6464 L11.5,13.7929 L11.5,3 C11.5,2.72386 11.7239,2.5 12,2.5 Z M4,18 C4,17.7239 4.22386,17.5 4.5,17.5 L19.5,17.5 C19.7761,17.5 20,17.7239 20,18 C20,18.2761 19.7761,18.5 19.5,18.5 L4.5,18.5 C4.22386,18.5 4,18.2761 4,18 Z M4.5,20.5 C4.22386,20.5 4,20.7239 4,21 C4,21.2761 4.22386,21.5 4.5,21.5 L19.5,21.5 C19.7761,21.5 20,21.2761 20,21 C20,20.7239 19.7761,20.5 19.5,20.5 L4.5,20.5 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Upload">M12,15.5 C11.7239,15.5 11.5,15.2761 11.5,15 L11.5,4.20711 L8.35355,7.35355 C8.15829,7.54882 7.84171,7.54882 7.64645,7.35355 C7.45118,7.15829 7.45118,6.84171 7.64645,6.64645 L11.6464,2.64645 C11.8417,2.45118 12.1583,2.45118 12.3536,2.64645 L16.3536,6.64645 C16.5488,6.84171 16.5488,7.15829 16.3536,7.35355 C16.1583,7.54882 15.8417,7.54882 15.6464,7.35355 L12.5,4.20711 L12.5,15 C12.5,15.2761 12.2761,15.5 12,15.5 Z M4.5,18 C4.22386,18 4,18.2761 4,18.5 C4,18.7761 4.22386,19 4.5,19 L19.5,19 C19.7761,19 20,18.7761 20,18.5 C20,18.2761 19.7761,18 19.5,18 L4.5,18 Z M4.5,21 C4.22386,21 4,21.2761 4,21.5 C4,21.7761 4.22386,22 4.5,22 L19.5,22 C19.7761,22 20,21.7761 20,21.5 C20,21.2761 19.7761,21 19.5,21 L4.5,21 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Copy">M8,3 C6.89543,3 6,3.89543 6,5 L6,15 C6,16.1046 6.89543,17 8,17 L16,17 C17.1046,17 18,16.1046 18,15 L18,5 C18,3.89543 17.1046,3 16,3 L8,3 Z M7,5 C7,4.44772 7.44772,4 8,4 L16,4 C16.5523,4 17,4.44772 17,5 L17,15 C17,15.5523 16.5523,16 16,16 L8,16 C7.44772,16 7,15.5523 7,15 L7,5 Z M4,7 C4.27614,7 4.5,7.22386 4.5,7.5 L4.5,18 C4.5,18.8284 5.17157,19.5 6,19.5 L15,19.5 C15.2761,19.5 15.5,19.7239 15.5,20 C15.5,20.2761 15.2761,20.5 15,20.5 L6,20.5 C4.61929,20.5 3.5,19.3807 3.5,18 L3.5,7.5 C3.5,7.22386 3.72386,7 4,7 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.Folder">M3,4.5 C3,3.67157 3.67157,3 4.5,3 L9.08579,3 C9.48362,3 9.86516,3.15804 10.1464,3.43934 L11.7071,5 L19.5,5 C20.3284,5 21,5.67157 21,6.5 L21,17.5 C21,18.3284 20.3284,19 19.5,19 L4.5,19 C3.67157,19 3,18.3284 3,17.5 L3,4.5 Z M4.5,4 C4.22386,4 4,4.22386 4,4.5 L4,17.5 C4,17.7761 4.22386,18 4.5,18 L19.5,18 C19.7761,18 20,17.7761 20,17.5 L20,6.5 C20,6.22386 19.7761,6 19.5,6 L11.2929,6 C11.0277,6 10.7733,5.89464 10.5858,5.70711 L9.43934,4.56066 C9.3456,4.46692 9.21841,4.41421 9.08579,4.41421 L4.5,4.41421 C4.34149,4.41421 4.1953,4.30058 4.1678,4.14442 C4.1403,3.98826 4.2415,3.8407 4.3976,3.8132 C4.4309,3.8073 4.4651,3.8043 4.5,3.8043 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.File">M5,3.5 C5,2.67157 5.67157,2 6.5,2 L13.5,2 C13.8978,2 14.2794,2.15804 14.5607,2.43934 L18.5607,6.43934 C18.842,6.72064 19,7.10218 19,7.5 L19,20.5 C19,21.3284 18.3284,22 17.5,22 L6.5,22 C5.67157,22 5,21.3284 5,20.5 L5,3.5 Z M6.5,3 C6.22386,3 6,3.22386 6,3.5 L6,20.5 C6,20.7761 6.22386,21 6.5,21 L17.5,21 C17.7761,21 18,20.7761 18,20.5 L18,8 L14,8 C13.4477,8 13,7.55228 13,7 L13,3 L6.5,3 Z M14,3.41421 L14,7 C14,7.00001 14,7 14,7 L17.5858,7 L14,3.41421 Z</StreamGeometry>
+
+    <!-- 方向指示与收折 -->
+    <StreamGeometry x:Key="Icon.Geo.ChevronDown">M4.64645,8.64645 C4.84171,8.45118 5.15829,8.45118 5.35355,8.64645 L12,15.2929 L18.6464,8.64645 C18.8417,8.45118 19.1583,8.45118 19.3536,8.64645 C19.5488,8.84171 19.5488,9.15829 19.3536,9.35355 L12.3536,16.3536 C12.1583,16.5488 11.8417,16.5488 11.6464,16.3536 L4.64645,9.35355 C4.45118,9.15829 4.45118,8.84171 4.64645,8.64645 Z</StreamGeometry>
+    
+    <StreamGeometry x:Key="Icon.Geo.ChevronUp">M4.64645,15.3536 C4.84171,15.5488 5.15829,15.5488 5.35355,15.3536 L12,8.70711 L18.6464,15.3536 C18.8417,15.5488 19.1583,15.5488 19.3536,15.3536 C19.5488,15.1583 19.5488,14.8417 19.3536,14.6464 L12.3536,7.64645 C12.1583,7.45118 11.8417,7.45118 11.6464,7.64645 L4.64645,14.6464 C4.45118,14.8417 4.45118,15.1583 4.64645,15.3536 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.ChevronLeft">M15.3536,4.64645 C15.5488,4.84171 15.5488,5.15829 15.3536,5.35355 L8.70711,12 L15.3536,18.6464 C15.5488,18.8417 15.5488,19.1583 15.3536,19.3536 C15.1583,19.5488 14.8417,19.5488 14.6464,19.3536 L7.64645,12.3536 C7.45118,12.1583 7.45118,11.8417 7.64645,11.6464 L14.6464,4.64645 C14.8417,4.45118 15.1583,4.45118 15.3536,4.64645 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.ChevronRight">M8.64645,4.64645 C8.45118,4.84171 8.45118,5.15829 8.64645,5.35355 L15.2929,12 L8.64645,18.6464 C8.45118,18.8417 8.45118,19.1583 8.64645,19.3536 C8.84171,19.5488 9.15829,19.5488 9.35355,19.3536 L16.3536,12.3536 C16.5488,12.1583 16.5488,11.8417 16.3536,11.6464 L9.35355,4.64645 C9.15829,4.45118 8.84171,4.45118 8.64645,4.64645 Z</StreamGeometry>
+
+    <!-- 语义状态提示 -->
+    <StreamGeometry x:Key="Icon.Geo.Info">M12,2 C6.47715,2 2,6.47715 2,12 C2,17.5228 6.47715,22 12,22 C17.5228,22 22,17.5228 22,12 C22,6.47715 17.5228,2 12,2 Z M12,3 C16.9706,3 21,7.02944 21,12 C21,16.9706 16.9706,21 12,21 C7.02944,21 3,16.9706 3,12 C3,7.02944 7.02944,3 12,3 Z M12,6.5 C12.5523,6.5 13,6.94772 13,7.5 C13,8.05228 12.5523,8.5 12,8.5 C11.4477,8.5 11,8.05228 11,7.5 C11,6.94772 11.4477,6.5 12,6.5 Z M12,10.5 C12.2761,10.5 12.5,10.7239 12.5,11 L12.5,16.5 C12.5,16.7761 12.2761,17 12,17 C11.7239,17 11.5,16.7761 11.5,16.5 L11.5,11 C11.5,10.7239 11.7239,10.5 12,10.5 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.SuccessCircle">M12,2 C6.47715,2 2,6.47715 2,12 C2,17.5228 6.47715,22 12,22 C17.5228,22 22,17.5228 22,12 C22,6.47715 17.5228,2 12,2 Z M12,3 C16.9706,3 21,7.02944 21,12 C21,16.9706 16.9706,21 12,21 C7.02944,21 3,16.9706 3,12 C3,7.02944 7.02944,3 12,3 Z M16.3536,8.64645 C16.5488,8.84171 16.5488,9.15829 16.3536,9.35355 L10.8536,14.8536 C10.6583,15.0488 10.3417,15.0488 10.1464,14.8536 L7.64645,12.3536 C7.45118,12.1583 7.45118,11.8417 7.64645,11.6464 C7.84171,11.4512 8.15829,11.4512 8.35355,11.6464 L10.5,13.7929 L15.6464,8.64645 C15.8417,8.45118 16.1583,8.45118 16.3536,8.64645 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.WarningTriangle">M11.134,3.5 C11.5189,2.83333 12.4811,2.83333 12.866,3.5 L21.5263,18.5 C21.9112,19.1667 21.4301,20 20.6603,20 L3.3397,20 C2.5699,20 2.0888,19.1667 2.4737,18.5 L11.134,3.5 Z M12,4.5 L3.3397,19.5 L20.6603,19.5 L12,4.5 Z M12,8.5 C12.2761,8.5 12.5,8.72386 12.5,9 L12.5,14 C12.5,14.2761 12.2761,14.5 12,14.5 C11.7239,14.5 11.5,14.2761 11.5,14 L11.5,9 C11.5,8.72386 11.7239,8.5 12,8.5 Z M12,16 C12.5523,16 13,16.4477 13,17 C13,17.5523 12.5523,18 12,18 C11.4477,18 11,17.5523 11,17 C11,16.4477 11.4477,16 12,16 Z</StreamGeometry>
+
+    <StreamGeometry x:Key="Icon.Geo.ErrorCircle">M12,2 C6.47715,2 2,6.47715 2,12 C2,17.5228 6.47715,22 12,22 C17.5228,22 22,17.5228 22,12 C22,6.47715 17.5228,2 12,2 Z M12,3 C16.9706,3 21,7.02944 21,12 C21,16.9706 16.9706,21 12,21 C7.02944,21 3,16.9706 3,12 C3,7.02944 7.02944,3 12,3 Z M8.64645,8.64645 C8.84171,8.45118 9.15829,8.45118 9.35355,8.64645 L12,11.2929 L14.6464,8.64645 C14.8417,8.45118 15.1583,8.45118 15.3536,8.64645 C15.5488,8.84171 15.5488,9.15829 15.3536,9.35355 L12.7071,12 L15.3536,14.6464 C15.5488,14.8417 15.5488,15.1583 15.3536,15.3536 C15.1583,15.5488 14.8417,15.5488 14.6464,15.3536 L12,12.7071 L9.35355,15.3536 C9.15829,15.5488 8.84171,15.5488 8.64645,15.3536 C8.45118,15.1583 8.45118,14.8417 8.64645,14.6464 L11.2929,12 L8.64645,9.35355 C8.45118,9.15829 8.45118,8.84171 8.64645,8.64645 Z</StreamGeometry>
+
+
+    <!-- ============================================================
+         2. 图标基础样式 (Path 级封装，自动继承前景)
+         ============================================================ -->
+
+    <Style x:Key="Icon.Base" TargetType="{x:Type Path}">
+        <Setter Property="Stretch" Value="Uniform" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <!-- 默认继承宿主 TextElement.Foreground，在任何深色/浅色/按钮状态下均不失真 -->
+        <Setter Property="Fill"
+                Value="{Binding Path=(TextElement.Foreground),
+                                RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}},
+                                FallbackValue={StaticResource Brush.Text.Primary}}" />
+    </Style>
+
+    <!-- 尺寸阶梯样式 -->
+    <Style x:Key="Icon.Micro" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Base}">
+        <Setter Property="Width" Value="{StaticResource Icon.Size.Micro}" />
+        <Setter Property="Height" Value="{StaticResource Icon.Size.Micro}" />
+    </Style>
+
+    <Style x:Key="Icon.Small" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Base}">
+        <Setter Property="Width" Value="{StaticResource Icon.Size.Small}" />
+        <Setter Property="Height" Value="{StaticResource Icon.Size.Small}" />
+    </Style>
+
+    <Style x:Key="Icon.Regular" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Base}">
+        <Setter Property="Width" Value="{StaticResource Icon.Size.Regular}" />
+        <Setter Property="Height" Value="{StaticResource Icon.Size.Regular}" />
+    </Style>
+
+    <Style x:Key="Icon.Medium" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Base}">
+        <Setter Property="Width" Value="{StaticResource Icon.Size.Medium}" />
+        <Setter Property="Height" Value="{StaticResource Icon.Size.Medium}" />
+    </Style>
+
+    <Style x:Key="Icon.Large" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Base}">
+        <Setter Property="Width" Value="{StaticResource Icon.Size.Large}" />
+        <Setter Property="Height" Value="{StaticResource Icon.Size.Large}" />
+    </Style>
+
+    <Style x:Key="Icon.Hero" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Base}">
+        <Setter Property="Width" Value="{StaticResource Icon.Size.Hero}" />
+        <Setter Property="Height" Value="{StaticResource Icon.Size.Hero}" />
+    </Style>
+
+    <!-- 语义固定着色图标样式 -->
+    <Style x:Key="Icon.Medium.Success" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Medium}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Success}" />
+    </Style>
+
+    <Style x:Key="Icon.Medium.Warning" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Medium}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Warning}" />
+    </Style>
+
+    <Style x:Key="Icon.Medium.Danger" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Medium}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Danger}" />
+    </Style>
+
+    <Style x:Key="Icon.Medium.Info" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Medium}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Accent}" />
+    </Style>
+
+    <Style x:Key="Icon.Large.Success" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Large}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Success}" />
+    </Style>
+
+    <Style x:Key="Icon.Large.Warning" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Large}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Warning}" />
+    </Style>
+
+    <Style x:Key="Icon.Large.Danger" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Large}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Danger}" />
+    </Style>
+
+    <Style x:Key="Icon.Large.Info" TargetType="{x:Type Path}" BasedOn="{StaticResource Icon.Large}">
+        <Setter Property="Fill" Value="{StaticResource Brush.Accent}" />
+    </Style>
+
+
+    <!-- ============================================================
+         3. 图标按钮 (IconButton: 正方形、幽灵底、完整悬停与禁用契约)
+         ============================================================ -->
+
+    <ControlTemplate x:Key="IconButton.Template" TargetType="{x:Type Button}">
+        <Border x:Name="Bd"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding Tag}"
+                SnapsToDevicePixels="True">
+            <ContentPresenter Margin="{TemplateBinding Padding}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              TextElement.Foreground="{TemplateBinding Foreground}" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.Control.Hover}" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.Control.Pressed}" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+            </Trigger>
+            <Trigger Property="IsKeyboardFocused" Value="True">
+                <Setter TargetName="Bd" Property="BorderBrush" Value="{StaticResource Brush.Focus}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Bd" Property="Background" Value="Transparent" />
+                <Setter TargetName="Bd" Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Disabled}" />
+                <Setter Property="Cursor" Value="Arrow" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!-- 标准 28x28 图标按钮 (默认) -->
+    <Style x:Key="Button.Icon" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="{StaticResource Layout.IconButton.Small}" />
+        <Setter Property="Height" Value="{StaticResource Layout.IconButton.Small}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+        <Setter Property="Tag" Value="{StaticResource Radius.Card}" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template" Value="{StaticResource IconButton.Template}" />
+    </Style>
+
+    <!-- 紧凑 24x24 图标按钮 (表格行、输入框尾部) -->
+    <Style x:Key="Button.Icon.Small" TargetType="{x:Type Button}" BasedOn="{StaticResource Button.Icon}">
+        <Setter Property="Width" Value="{StaticResource Layout.IconButton.Micro}" />
+        <Setter Property="Height" Value="{StaticResource Layout.IconButton.Micro}" />
+        <Setter Property="Tag" Value="{StaticResource Radius.Small}" />
+    </Style>
+
+    <!-- 大号 34x34 图标按钮 (主工具条) -->
+    <Style x:Key="Button.Icon.Large" TargetType="{x:Type Button}" BasedOn="{StaticResource Button.Icon}">
+        <Setter Property="Width" Value="{StaticResource Layout.IconButton.Large}" />
+        <Setter Property="Height" Value="{StaticResource Layout.IconButton.Large}" />
+        <Setter Property="Tag" Value="{StaticResource Radius.Card}" />
+    </Style>
+
+    <!-- 危险图标按钮 (删除操作，悬停浅红底红标) -->
+    <ControlTemplate x:Key="IconButton.Danger.Template" TargetType="{x:Type Button}">
+        <Border x:Name="Bd"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding Tag}"
+                SnapsToDevicePixels="True">
+            <ContentPresenter Margin="{TemplateBinding Padding}"
+                              HorizontalAlignment="Center"
+                              VerticalAlignment="Center"
+                              TextElement.Foreground="{TemplateBinding Foreground}" />
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.Danger.Subtle}" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.Danger}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="Bd" Property="Background" Value="{StaticResource Brush.Danger.Subtle}" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.Danger.Pressed}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Bd" Property="Background" Value="Transparent" />
+                <Setter TargetName="Bd" Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Foreground" Value="{StaticResource Brush.Text.Disabled}" />
+                <Setter Property="Cursor" Value="Arrow" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="Button.Icon.Danger" TargetType="{x:Type Button}" BasedOn="{StaticResource Button.Icon}">
+        <Setter Property="Template" Value="{StaticResource IconButton.Danger.Template}" />
+    </Style>
+
+    <Style x:Key="Button.Icon.Danger.Small" TargetType="{x:Type Button}" BasedOn="{StaticResource Button.Icon.Small}">
+        <Setter Property="Template" Value="{StaticResource IconButton.Danger.Template}" />
+    </Style>
+
+</ResourceDictionary>

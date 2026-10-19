@@ -1,0 +1,304 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <!--
+        OpenCAD WPF Design Tokens
+        =========================
+        唯一色值来源。业务 XAML 不要直接写 #RRGGBB，也不要直接引用 Color.*；
+        一律引用 Brush.*，文字样式引用 Text.*。
+        命名规则：
+          Color.*  = 原始颜色（只允许本文件引用）
+          Brush.*  = 画刷（业务 XAML 唯一允许引用的颜色资源）
+          Font*    = 字体与字号
+          Layout.* = 尺寸、间距、内边距
+          Radius.* = 圆角
+    -->
+
+    <!-- ============================================================
+         1. 基础色板（低饱和工业桌面配色）
+         ============================================================ -->
+    <Color x:Key="Color.WindowBackground">#FFE9EDF2</Color>
+    <Color x:Key="Color.Surface">#FFFAFBFC</Color>
+    <Color x:Key="Color.SurfaceAlt">#FFF2F4F7</Color>
+    <Color x:Key="Color.SurfaceSunken">#FFF7F8FA</Color>
+
+    <Color x:Key="Color.Border">#FFD0D5DB</Color>
+    <Color x:Key="Color.BorderStrong">#FFAEB7C2</Color>
+
+    <Color x:Key="Color.TextPrimary">#FF1F2933</Color>
+    <Color x:Key="Color.TextSecondary">#FF4B5563</Color>
+    <!-- 禁用文字：在 ControlDisabled(#F2F4F7) 上约 4.5:1，仍能看清。 -->
+    <Color x:Key="Color.TextDisabled">#FF667085</Color>
+
+    <!-- Accent：唯一品牌色。白字只允许压在 Accent/AccentHover/AccentPressed 上。 -->
+    <Color x:Key="Color.Accent">#FF2F6F9F</Color>
+    <Color x:Key="Color.AccentHover">#FF285F88</Color>
+    <Color x:Key="Color.AccentPressed">#FF22506F</Color>
+    <Color x:Key="Color.AccentSubtle">#FFE4EEF5</Color>
+    <Color x:Key="Color.AccentSubtleHover">#FFD8E6F0</Color>
+    <Color x:Key="Color.OnAccent">#FFFFFFFF</Color>
+
+    <!-- 语义色 -->
+    <Color x:Key="Color.Danger">#FFB43B32</Color>
+    <Color x:Key="Color.DangerHover">#FF97302A</Color>
+    <Color x:Key="Color.DangerPressed">#FF7E2823</Color>
+    <Color x:Key="Color.DangerSubtle">#FFFBEDEC</Color>
+
+    <Color x:Key="Color.Success">#FF2A704E</Color>
+    <Color x:Key="Color.SuccessSubtle">#FFE9F4EE</Color>
+
+    <Color x:Key="Color.Warning">#FF7A5A1E</Color>
+    <Color x:Key="Color.WarningSubtle">#FFF7F0E3</Color>
+
+    <!-- 交互态 -->
+    <Color x:Key="Color.ControlHover">#FFF0F3F6</Color>
+    <Color x:Key="Color.ControlPressed">#FFE4E8EE</Color>
+    <Color x:Key="Color.ControlDisabled">#FFF2F4F7</Color>
+
+    <!-- 选中态：浅底深字，禁止白字。 -->
+    <Color x:Key="Color.Selection">#FFE4EEF5</Color>
+    <Color x:Key="Color.SelectionHover">#FFD8E6F0</Color>
+
+    <!-- 焦点环：非文字元素 3:1 以上 -->
+    <Color x:Key="Color.Focus">#FF2F6F9F</Color>
+
+    <!-- Tooltip：深底白字，最高对比度。 -->
+    <Color x:Key="Color.TooltipBackground">#FF1F2933</Color>
+    <Color x:Key="Color.TooltipForeground">#FFFFFFFF</Color>
+
+    <!-- 滚动条 -->
+    <Color x:Key="Color.ScrollThumb">#FFC3CAD3</Color>
+    <Color x:Key="Color.ScrollThumbHover">#FFA7B0BB</Color>
+
+    <!-- 卡片 / 消息 / 状态标签 -->
+    <Color x:Key="Color.CardSystem">#FFF2F4F7</Color>
+    <Color x:Key="Color.CardUser">#FFE4EEF5</Color>
+    <Color x:Key="Color.CardAi">#FFFAFBFC</Color>
+    <Color x:Key="Color.CardError">#FFFBEDEC</Color>
+
+    <Color x:Key="Color.BadgeIdleBackground">#FFF2F4F7</Color>
+    <Color x:Key="Color.BadgeIdleForeground">#FF4B5563</Color>
+    <Color x:Key="Color.BadgeActiveBackground">#FFE4EEF5</Color>
+    <Color x:Key="Color.BadgeActiveForeground">#FF2F6F9F</Color>
+    <Color x:Key="Color.BadgeDoneBackground">#FFE9F4EE</Color>
+    <Color x:Key="Color.BadgeDoneForeground">#FF2A704E</Color>
+    <Color x:Key="Color.BadgeStoppedBackground">#FFF7F0E3</Color>
+    <Color x:Key="Color.BadgeStoppedForeground">#FF7A5A1E</Color>
+    <Color x:Key="Color.BadgeFailedBackground">#FFFBEDEC</Color>
+    <Color x:Key="Color.BadgeFailedForeground">#FFB43B32</Color>
+
+    <Color x:Key="Color.OverlayChip">#E6FFFFFF</Color>
+    <Color x:Key="Color.OverlayChipGlyph">#FF3C3C3C</Color>
+    <Color x:Key="Color.OverlayChipHover">#F2B43B32</Color>
+
+    <Color x:Key="Color.Shadow">#FF1F2933</Color>
+
+    <!-- ============================================================
+         2. 画刷（业务 XAML 唯一允许引用的颜色资源）
+         ============================================================ -->
+    <SolidColorBrush x:Key="Brush.WindowBackground" Color="{StaticResource Color.WindowBackground}" />
+    <SolidColorBrush x:Key="Brush.Surface" Color="{StaticResource Color.Surface}" />
+    <SolidColorBrush x:Key="Brush.SurfaceAlt" Color="{StaticResource Color.SurfaceAlt}" />
+    <SolidColorBrush x:Key="Brush.SurfaceSunken" Color="{StaticResource Color.SurfaceSunken}" />
+
+    <SolidColorBrush x:Key="Brush.Border" Color="{StaticResource Color.Border}" />
+    <SolidColorBrush x:Key="Brush.Border.Strong" Color="{StaticResource Color.BorderStrong}" />
+
+    <SolidColorBrush x:Key="Brush.Text.Primary" Color="{StaticResource Color.TextPrimary}" />
+    <SolidColorBrush x:Key="Brush.Text.Secondary" Color="{StaticResource Color.TextSecondary}" />
+    <SolidColorBrush x:Key="Brush.Text.Disabled" Color="{StaticResource Color.TextDisabled}" />
+
+    <SolidColorBrush x:Key="Brush.Accent" Color="{StaticResource Color.Accent}" />
+    <SolidColorBrush x:Key="Brush.Accent.Hover" Color="{StaticResource Color.AccentHover}" />
+    <SolidColorBrush x:Key="Brush.Accent.Pressed" Color="{StaticResource Color.AccentPressed}" />
+    <SolidColorBrush x:Key="Brush.Accent.Subtle" Color="{StaticResource Color.AccentSubtle}" />
+    <SolidColorBrush x:Key="Brush.Accent.SubtleHover" Color="{StaticResource Color.AccentSubtleHover}" />
+    <SolidColorBrush x:Key="Brush.OnAccent" Color="{StaticResource Color.OnAccent}" />
+
+    <SolidColorBrush x:Key="Brush.Danger" Color="{StaticResource Color.Danger}" />
+    <SolidColorBrush x:Key="Brush.Danger.Hover" Color="{StaticResource Color.DangerHover}" />
+    <SolidColorBrush x:Key="Brush.Danger.Pressed" Color="{StaticResource Color.DangerPressed}" />
+    <SolidColorBrush x:Key="Brush.Danger.Subtle" Color="{StaticResource Color.DangerSubtle}" />
+
+    <SolidColorBrush x:Key="Brush.Success" Color="{StaticResource Color.Success}" />
+    <SolidColorBrush x:Key="Brush.Success.Subtle" Color="{StaticResource Color.SuccessSubtle}" />
+
+    <SolidColorBrush x:Key="Brush.Warning" Color="{StaticResource Color.Warning}" />
+    <SolidColorBrush x:Key="Brush.Warning.Subtle" Color="{StaticResource Color.WarningSubtle}" />
+
+    <SolidColorBrush x:Key="Brush.Control.Hover" Color="{StaticResource Color.ControlHover}" />
+    <SolidColorBrush x:Key="Brush.Control.Pressed" Color="{StaticResource Color.ControlPressed}" />
+    <SolidColorBrush x:Key="Brush.Control.Disabled" Color="{StaticResource Color.ControlDisabled}" />
+
+    <SolidColorBrush x:Key="Brush.Selection" Color="{StaticResource Color.Selection}" />
+    <SolidColorBrush x:Key="Brush.Selection.Hover" Color="{StaticResource Color.SelectionHover}" />
+
+    <SolidColorBrush x:Key="Brush.Focus" Color="{StaticResource Color.Focus}" />
+    <SolidColorBrush x:Key="Brush.Tooltip.Background" Color="{StaticResource Color.TooltipBackground}" />
+    <SolidColorBrush x:Key="Brush.Tooltip.Foreground" Color="{StaticResource Color.TooltipForeground}" />
+
+    <SolidColorBrush x:Key="Brush.ScrollThumb" Color="{StaticResource Color.ScrollThumb}" />
+    <SolidColorBrush x:Key="Brush.ScrollThumb.Hover" Color="{StaticResource Color.ScrollThumbHover}" />
+
+    <SolidColorBrush x:Key="Brush.Card.System" Color="{StaticResource Color.CardSystem}" />
+    <SolidColorBrush x:Key="Brush.Card.User" Color="{StaticResource Color.CardUser}" />
+    <SolidColorBrush x:Key="Brush.Card.Ai" Color="{StaticResource Color.CardAi}" />
+    <SolidColorBrush x:Key="Brush.Card.Error" Color="{StaticResource Color.CardError}" />
+    <SolidColorBrush x:Key="Brush.Card.Border" Color="{StaticResource Color.Border}" />
+
+    <SolidColorBrush x:Key="Brush.Badge.Idle.Background" Color="{StaticResource Color.BadgeIdleBackground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Idle.Foreground" Color="{StaticResource Color.BadgeIdleForeground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Active.Background" Color="{StaticResource Color.BadgeActiveBackground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Active.Foreground" Color="{StaticResource Color.BadgeActiveForeground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Done.Background" Color="{StaticResource Color.BadgeDoneBackground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Done.Foreground" Color="{StaticResource Color.BadgeDoneForeground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Stopped.Background" Color="{StaticResource Color.BadgeStoppedBackground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Stopped.Foreground" Color="{StaticResource Color.BadgeStoppedForeground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Failed.Background" Color="{StaticResource Color.BadgeFailedBackground}" />
+    <SolidColorBrush x:Key="Brush.Badge.Failed.Foreground" Color="{StaticResource Color.BadgeFailedForeground}" />
+
+    <SolidColorBrush x:Key="Brush.OverlayChip" Color="{StaticResource Color.OverlayChip}" />
+    <SolidColorBrush x:Key="Brush.OverlayChip.Glyph" Color="{StaticResource Color.OverlayChipGlyph}" />
+    <SolidColorBrush x:Key="Brush.OverlayChip.Hover" Color="{StaticResource Color.OverlayChipHover}" />
+
+    <SolidColorBrush x:Key="Brush.Shadow" Color="{StaticResource Color.Shadow}" />
+
+    <!-- ============================================================
+         3. 字体与字号
+         统一字体栈，禁止在业务窗口里混用其他字体。
+         ============================================================ -->
+    <FontFamily x:Key="Font.Ui">Microsoft YaHei UI, Microsoft YaHei, Segoe UI</FontFamily>
+
+    <sys:Double x:Key="FontSize.Title">14.5</sys:Double>
+    <sys:Double x:Key="FontSize.Section">14.5</sys:Double>
+    <sys:Double x:Key="FontSize.Body">13.5</sys:Double>
+    <sys:Double x:Key="FontSize.Caption">13</sys:Double>
+    <sys:Double x:Key="FontSize.Code">12.5</sys:Double>
+
+    <sys:Double x:Key="LineHeight.Body">21</sys:Double>
+    <sys:Double x:Key="LineHeight.Caption">20</sys:Double>
+
+    <!-- ============================================================
+         4. 布局尺寸
+         ============================================================ -->
+    <sys:Double x:Key="Layout.ControlHeight">34</sys:Double>
+    <sys:Double x:Key="Layout.ControlHeight.Small">30</sys:Double>
+    <sys:Double x:Key="Layout.InputMinHeight">110</sys:Double>
+    <sys:Double x:Key="Layout.InputMaxHeight">180</sys:Double>
+    <sys:Double x:Key="Layout.LogMinHeight">120</sys:Double>
+    <sys:Double x:Key="Layout.LogMaxHeight">240</sys:Double>
+    <sys:Double x:Key="Layout.TagHeight">24</sys:Double>
+    <sys:Double x:Key="Layout.IconButton.Micro">24</sys:Double>
+    <sys:Double x:Key="Layout.IconButton.Small">28</sys:Double>
+    <sys:Double x:Key="Layout.IconButton.Large">34</sys:Double>
+    <sys:Double x:Key="Layout.RowHeight">26</sys:Double>
+    <sys:Double x:Key="Layout.HeaderHeight">28</sys:Double>
+
+    <!-- 图标标准尺寸阶梯 (Icon Sizing Hierarchy) -->
+    <sys:Double x:Key="Icon.Size.Micro">12</sys:Double>
+    <sys:Double x:Key="Icon.Size.Small">14</sys:Double>
+    <sys:Double x:Key="Icon.Size.Regular">16</sys:Double>
+    <sys:Double x:Key="Icon.Size.Medium">20</sys:Double>
+    <sys:Double x:Key="Icon.Size.Large">24</sys:Double>
+    <sys:Double x:Key="Icon.Size.Hero">32</sys:Double>
+
+
+    <Thickness x:Key="Layout.WindowPadding">16</Thickness>
+    <Thickness x:Key="Layout.GroupPadding">12</Thickness>
+    <Thickness x:Key="Layout.FormRowMargin">0,4,0,4</Thickness>
+    <Thickness x:Key="Layout.ButtonPadding">14,0</Thickness>
+    <Thickness x:Key="Layout.InputPadding">8,0</Thickness>
+    <Thickness x:Key="Layout.InputPadding.Multiline">8,6</Thickness>
+    <Thickness x:Key="Layout.ListItemPadding">8,6</Thickness>
+
+    <CornerRadius x:Key="Radius.Small">2</CornerRadius>
+    <CornerRadius x:Key="Radius.Card">4</CornerRadius>
+    <CornerRadius x:Key="Radius.Input">4</CornerRadius>
+    <CornerRadius x:Key="Radius.Pill">10</CornerRadius>
+
+    <!-- ============================================================
+         5. 文本样式（仅用于静态文本）
+         注意：这些样式带显式 Foreground，禁止用在按钮/标签页/
+         选中项等会随状态改变前景的控件内部；那里使用隐式 TextBlock
+         （由内容宿主继承 Foreground）或直接绑定 TextElement.Foreground。
+         ============================================================ -->
+    <Style x:Key="Text.Title" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Title}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="Text.Section" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Section}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="Text.Body" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Body}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Body}" />
+    </Style>
+
+    <Style x:Key="Text.Caption" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Caption}" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Caption}" />
+    </Style>
+
+    <Style x:Key="Text.Hint" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text.Caption}">
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+    </Style>
+
+    <Style x:Key="Text.Label" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Body}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="Text.Danger" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text.Caption}">
+        <Setter Property="Foreground" Value="{StaticResource Brush.Danger}" />
+    </Style>
+
+    <Style x:Key="Text.Success" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text.Caption}">
+        <Setter Property="Foreground" Value="{StaticResource Brush.Success}" />
+    </Style>
+
+    <Style x:Key="Text.Warning" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource Text.Caption}">
+        <Setter Property="Foreground" Value="{StaticResource Brush.Warning}" />
+    </Style>
+
+    <Style x:Key="Text.Code" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Code}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Primary}" />
+        <Setter Property="TextWrapping" Value="Wrap" />
+        <Setter Property="LineHeight" Value="{StaticResource LineHeight.Caption}" />
+    </Style>
+
+    <Style x:Key="Text.RoleLabel" TargetType="{x:Type TextBlock}">
+        <Setter Property="FontFamily" Value="{StaticResource Font.Ui}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Caption}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Text.Secondary}" />
+        <Setter Property="Background" Value="{StaticResource Brush.SurfaceAlt}" />
+        <Setter Property="Padding" Value="6,1" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="Margin" Value="0,0,0,6" />
+    </Style>
+
+</ResourceDictionary>

@@ -493,15 +493,18 @@ public partial class MainWindow : Window
         var apiRunning = _service.IsApiRunning;
         var selectedModel = ModelCombo.SelectedItem as ModelInfo;
 
+        var successBrush = TryFindResource("Brush.Success") as Brush ?? Brushes.Green;
+        var disabledBrush = TryFindResource("Brush.Text.Disabled") as Brush ?? Brushes.Gray;
+
         SelectedModelText.Text = loaded ? _service.ModelName ?? "--" : selectedModel?.FileName ?? "--";
 
-        ModelStatusText.Text = loaded ? $"已就绪" : "未加载";
-        ModelStatusText.Foreground = loaded ? new SolidColorBrush(Color.FromRgb(0, 150, 0)) : Brushes.Gray;
+        ModelStatusText.Text = loaded ? "已就绪" : "未加载";
+        ModelStatusText.Foreground = loaded ? successBrush : disabledBrush;
 
         BackendStatusText.Text = loaded ? (_service.EngineRuntimeSummary ?? "就绪") : "--";
 
         ApiStatusText.Text = apiRunning ? $"运行中 ({_service.ApiUrl})" : "未运行";
-        ApiStatusText.Foreground = apiRunning ? new SolidColorBrush(Color.FromRgb(0, 150, 0)) : Brushes.Gray;
+        ApiStatusText.Foreground = apiRunning ? successBrush : disabledBrush;
 
         // 加载状态下保持下拉可用：选择其它模型再点「加载模型」即可热切换
         var switchingModel = loaded && selectedModel is not null
