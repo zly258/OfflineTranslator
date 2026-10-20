@@ -125,7 +125,6 @@
                          AcceptsReturn="True" AcceptsTab="True"
                          TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         MinHeight="100"
                          Padding="8"
                          KeyDown="InputBox_KeyDown"
                          ToolTip="在此输入待翻译原文（支持单行、多行段落，按 Ctrl + Enter 快速翻译）" />
@@ -172,7 +171,6 @@
                          AcceptsReturn="True"
                          TextWrapping="Wrap" VerticalScrollBarVisibility="Auto"
                          VerticalContentAlignment="Top"
-                         MinHeight="100"
                          Padding="8"
                          Background="{StaticResource Brush.SurfaceAlt}" />
             </Grid>
